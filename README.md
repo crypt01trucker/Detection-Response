@@ -31,3 +31,48 @@ Slack will be used as a messaging platform for real-time alerts and notification
 
 ### SquareX
 SquareX, a disposable email service, will be used for sending detailed email notifications to the SOC team regarding detected threats.
+
+## Setting Up LimaCharlie on a Windows VM
+
+### Step 1: Deploy a Windows VM
+Start by deploying a **Windows VM**. You can set it up:
+- On-premises on your host computer using **Hyper-V**, **VMware**, or **VirtualBox**.
+- In the cloud using providers like **Azure**, **AWS**, **Vultr**, **GCP**, or **DigitalOcean**.
+
+### Step 2: Sign Up with LimaCharlie
+1. Go to the [LimaCharlie website](https://www.limacharlie.io/) and sign up for a free account.
+2. Once your account is created, log in to the LimaCharlie portal.
+
+### Step 3: Generate Installation Key in LimaCharlie
+1. In the LimaCharlie portal, navigate to the **Sensors** tab.
+2. Select **Installation Keys** and click on **Create Installation Key**.
+3. For the description, enter a name like “SOAR-EDR-Project” to identify this key.
+4. Once created, the new key will appear under **Installation Keys**.
+
+This **Installation Key** will be required to install the LimaCharlie agent on your Windows VM.
+
+### Step 4: Install the LimaCharlie Agent on the Windows VM
+1. Connect to your Windows VM.
+2. Download the **LimaCharlie Windows Agent** (64-bit) using the [download link](https://downloads.limacharlie.io/sensor/windows/64) provided in the **Installation Keys** tab in the LimaCharlie portal.
+3. Copy the **Sensor Key** created in Step 3, as we’ll need it to complete the installation.
+
+### Installing the Agent
+1. Open an admin PowerShell terminal in the directory where the agent file is downloaded.
+2. Run the following command to install the agent, replacing `lc_sensor.exe` with the downloaded file name and `YOUR_INSTALLATION_KEY` with your actual Sensor Key:
+   ```powershell
+   .\lc_sensor.exe -i YOUR_INSTALLATION_KEY
+   ```
+
+3. After installation, go to **Services** in the Windows VM, and you should see that the **LimaCharlie agent** is running.
+
+### Step 5: Verify the Sensor in LimaCharlie
+1. Go back to the LimaCharlie portal, and under the **Sensors** tab, navigate to the **Sensors List**.
+2. You should see your Windows VM listed here. Click on it to view additional details.
+
+### Exploring the Endpoint
+- **File System**: View, download, and check file hashes (useful for identifying malware via VirusTotal).
+- **Autorun**: Check for persistent startup items that may indicate malware.
+- **Drivers**: Review drivers installed on the VM to detect any suspicious activity.
+- **Console**: Send commands directly to the endpoint.
+- **Network**: Monitor network processes and detect connections to any malicious IPs.
+- **Timeline**: Track events in chronological order for incident analysis.
