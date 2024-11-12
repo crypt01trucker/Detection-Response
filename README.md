@@ -76,3 +76,75 @@ This **Installation Key** will be required to install the LimaCharlie agent on y
 - **Console**: Send commands directly to the endpoint.
 - **Network**: Monitor network processes and detect connections to any malicious IPs.
 - **Timeline**: Track events in chronological order for incident analysis.
+
+## Install and run LaZagne
+
+### Step 1: Preparing the Windows Server VM
+1. **Disable Windows Defender:** First, disable Windows Defender on your Windows Server VM. This will allow us to download and run LaZagne without it being blocked.
+2. **Download LaZagne:** Go to the official GitHub repository for LaZagne: [GitHub - AlessandroZ/LaZagne](https://github.com/AlessandroZ/LaZagne). You might see a warning about the download’s safety—ignore this by clicking on the three dots and selecting **Keep Anyway**.
+
+### Step 2: Running LaZagne and Checking Telemetry in LimaCharlie
+1. **Run LaZagne:** Execute the LaZagne tool in a admin PowerShell terminal on your VM to initiate the credential-stealing simulation.
+2. **Check telemetry in LimaCharlie:** Got to LimaCharlie, go to the **Timeline** tab, and search for “LaZagne.” In the first `New_Process` event, we’ll see details like:
+   - **Parent Process** (e.g., PowerShell)
+   - **File Path**
+   - **Process ID and Parent Process ID**
+   - **Command Line**
+   - **Hash**
+   - **User Name**
+
+### Step 3: Setting Up a Custom Detection Rule in LimaCharlie
+1. **Create a Custom Rule:** Open the **Automation** tab in LimaCharlie, then go to **D&R Rules** and click on **Create Custom Rule**.
+2. **Clone an Existing Rule:** To simplify, find a similar rule (like one for new process creation) and use it as a base for your custom rule.
+3. **Modify for LaZagne Detection:** Customize the rule by changing paths and hash values. Here’s an example detection rule for LaZagne:
+
+   ```yaml
+   events:
+     - NEW_PROCESS
+     - EXISTING_PROCESS
+   op: and
+   rules:
+     - op: is windows
+     - op: or
+       rules:
+       - case sensitive: false
+         op: ends with
+         path: event/FILE_PATH
+         value: LaZagne.exe
+       - case sensitive: false
+         op: contains
+         path: event/COMMAND_LINE
+         value: LaZagne
+       - case sensitive: false
+         op: is
+         path: event/HASH
+         value: '467e49f1f795c1b08245ae621c59cdf06df630fc1631dc0059da9a032858a486'
+   - action: report
+     metadata:
+       author: SocLab
+       description: Detects LaZagne Usage
+       falsepositives:
+       - Unlikely
+       level: high
+       tags:
+       - attack.credential_access
+     name: SocLab - HackingTool - LaZagne
+   ```
+
+4. **Run a Test Event:** Paste an example event to test if your rule correctly detects LaZagne.
+
+### Step 4: Clear Detections and Run LaZagne Again
+1. **Delete Existing Detections:** For a clean slate, delete previous detections in the **Detections** tab.
+2. **Re-run LaZagne with `/all` Argument:** On your Windows Server VM, run `lazagne.exe /all` and check LimaCharlie’s **Detections** tab again to confirm your rule has detected it.
+
+### Step 5: Automating Further with Tines
+Use key fields like `COMMAND_LINE`, `FILE_PATH`, `HASH`, and `PROCESS_ID` in Tines for automation tasks based on detected events.
+
+### Bonus Step: Detecting Mimikatz
+1. **Download Mimikatz:** Get Mimikatz from [GitHub - gentilkiwi/mimikatz](https://github.com/gentilkiwi/mimikatz), extract the file, and open PowerShell as admin.
+2. **Run Commands:**
+   ```powershell
+   privilege::debug
+   sekurlsa::logonpasswords
+   ```
+3. **Check LimaCharlie Detections:** Mimikatz should trigger built-in detections in LimaCharlie due to its credential-dumping capabilities.
