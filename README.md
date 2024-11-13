@@ -167,3 +167,27 @@ respond:
    sekurlsa::logonpasswords
    ```
 3. **Check LimaCharlie Detections:** Mimikatz should trigger the built-in detection rules in LimaCharlie designed for Mimikatz.
+
+## Signing Up for Slack, SquareX, and Tines
+
+### Slack Setup
+
+1. **Sign Up on Slack**:
+   - Visit [Slack](https://slack.com) and choose the free version to sign up.
+2. **Create a Channel**:
+   - Once your account is set up, create a new channel named `#alert`.
+   - This channel will receive the detection alerts from Tines.
+
+### SquareX Setup
+
+1. **Sign Up for SquareX**:
+   - Visit [SquareX](https://sqrx.com) and sign up to receive emails from Tines.
+
+### Tines Setup
+
+1. **Sign Up on Tines**:
+   - Go to [Tines](https://tines.com) and sign up.
+2. **Explore the Interface**:
+   - Upon signing in, you can drag and drop the necessary apps from the left into the middle of your "story" or "playbook".
+3. **Clear Default Apps**:
+   - Delete the two default apps in the middle to start fresh.
