@@ -346,7 +346,8 @@ respond:
 
 12. **Configure Final Slack Notification**:
     - Copy the second Slack app created under the **NO** trigger and connect it to the second LimaCharlie app.
-    - Modify the message to:
+    - Modify the message in the message box to:
         ```plaintext
-        Isolation Status: <<get_isolation_status.body.is_isolated>>
-        Device: <<detection_l
+        *Isolation Status:* <<isolate_sensor.status>>
+        *Device Name*: <<detection_limacharlie.body.detect.routing.hostname>> has been isolated.
+        ```
