@@ -344,10 +344,15 @@ respond:
     - Change the **Sensor ID** to match your device.
     - Re-emit another event from the Webhook to ensure it works.
 
-12. **Configure Final Slack Notification**:
+12. **Configure Isolated Slack Notification**:
     - Copy the second Slack app created under the **NO** trigger and connect it to the second LimaCharlie app.
     - Modify the message in the message box to:
         ```plaintext
         *Isolation Status:* <<isolate_sensor.status>>
         *Device Name*: <<detection_limacharlie.body.detect.routing.hostname>> has been isolated.
         ```
+13. **Test Your Playbook**:
+    - Re-emit an event or run LaZagne or Mimikatz again to test your playbook.
+    - Verify that your playbook works as intended, allowing a SOC analyst to decide whether to isolate a device, sending emails to your SOC team, and providing alerts in your Slack messages.
+
+You now have a complete playbook for isolating or not isolating a device based on SOC analyst inputs, with notifications via email and Slack.
