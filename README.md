@@ -191,3 +191,162 @@ respond:
    - Upon signing in, you can drag and drop the necessary apps from the left into the middle of your "story" or "playbook".
 3. **Clear Default Apps**:
    - Delete the two default apps in the middle to start fresh.
+
+## Running the Playbook in SOAR Tines
+
+### Connecting Slack with Tines
+
+1. **Add Slack to Your Playbook**:
+    - In your Tines story/playbook, click on **Templates** and search for **Slack**. Drag it into the middle of your playbook.
+    - On the right-hand side of the screen, choose **Send Message**.
+
+2. **Integrate Tines with Slack**:
+    - In the Slack portal, go to **Apps** and add the Tines app.
+    - In Tines, navigate to **Dashboard**, click on **Your First Team**, then **Credentials**. Click on **+New**, search for Slack, and select it.
+    - In the new window, click on **Use Tines' App for Slack**, then **Allow**.
+
+3. **Connect Credentials**:
+    - Go back to your playbook in Tines and connect the credentials with the Slack template you just created.
+    - Input the **Channel ID** from the alerts channel in Slack. You can find this by going into the alerts channel, clicking on **Open Channel Details**, and copying the Channel ID at the bottom.
+
+4. **Test Slack Integration**:
+    - Click on the Slack template in Tines, and then click on **Test** to see if you receive the default "Hello, world!" in the alerts channel in Slack.
+
+### Setting Up Email with SquareX
+
+1. **Get Disposable Email Address**:
+    - Go to the SquareX portal and copy your disposable email address.
+
+2. **Add Email App to Tines**:
+    - In Tines, drag and drop the **Send Email** app into the middle of your playbook.
+    - Add the email address in the **Send Email** app.
+
+3. **Test Email Integration**:
+    - Connect the **Webhook** app with the **Send Email** app and the **Slack** app.
+    - If everything is set up correctly, you should receive an email and a Slack message.
+
+### Setting Up User Prompt
+
+1. **Add User Prompt**:
+    - In Tines, click on **Tools**, then **Page**, and drag it into the middle of your playbook.
+    - Give it a name and click on **Edit Page**.
+
+2. **Customize Detection Details**:
+    - Modify the page to include detection details so the SOC Analyst can decide whether to isolate the device.
+	- To find the good format for the fields, you can go in the webhook app, click on events, find the LaZagne event and click on a field to copy it.
+    - Use the following fields for event details:
+        ```markdown
+        **Title**: <<detection_limacharlie.body.cat>>
+        **Time**: <<detection_limacharlie.body.detect.routing.event_time>>
+        **Device Name**: <<detection_limacharlie.body.detect.routing.hostname>>
+        **Username**: <<detection_limacharlie.body.detect.event.USER_NAME>>
+        **Source IP**: <<detection_limacharlie.body.detect.routing.ext_ip>>
+        **File Path**: <<detection_limacharlie.body.detect.event.FILE_PATH>>
+        **Command Line**: <<detection_limacharlie.body.detect.event.COMMAND_LINE>>
+        **Process ID**: <<detection_limacharlie.body.detect.event.PROCESS_ID>>
+        **Hash**: <<detection_limacharlie.body.detect.event.HASH>>
+        **Alert Level**: <<detection_limacharlie.body.detect_mtd.level>>
+        **Sensor ID**: <<detection_limacharlie.body.detect.routing.sid>>
+        **Detection Link**: <<detection_limacharlie.body.link>>
+        ```
+
+3. **Add a Boolean Field (Yes or No)**:
+    - Add a Boolean field for user prompt `isolate?`.
+
+### Email Template Configuration
+
+1. **Format Email in HTML**:
+    - Copy the same fields for the **User Prompt** app.
+    - Format the email in HTML to make it look nice:
+        ```html
+        <b>Title</b>: <<detection_limacharlie.body.cat>><br>
+        <b>Time</b>: <<detection_limacharlie.body.detect.routing.event_time>><br>
+        <b>Device Name</b>: <<detection_limacharlie.body.detect.routing.hostname>><br>
+        <b>Username</b>: <<detection_limacharlie.body.detect.event.USER_NAME>><br>
+        <b>Source IP</b>: <<detection_limacharlie.body.detect.routing.ext_ip>><br>
+        <b>File Path</b>: <<detection_limacharlie.body.detect.event.FILE_PATH>><br>
+        <b>Command Line</b>: <<detection_limacharlie.body.detect.event.COMMAND_LINE>><br>
+        <b>Process ID</b>: <<detection_limacharlie.body.detect.event.PROCESS_ID>><br>
+        <b>Hash</b>: <<detection_limacharlie.body.detect.event.HASH>><br>
+        <b>Alert Level</b>: <<detection_limacharlie.body.detect_mtd.level>><br>
+        <b>Sensor ID</b>: <<detection_limacharlie.body.detect.routing.sid>><br>
+        <b>Detection Link</b>: <a href="<<detection_limacharlie.body.link>>"><<detection_limacharlie.body.link>></a>
+        ```
+
+2. **Add Fields in Slack App**:
+    - Add the same fields in the Slack app to ensure the alert message contains all detection details:
+        ```plaintext
+        *Title*: <<detection_limacharlie.body.cat>>
+        *Time*: <<detection_limacharlie.body.detect.routing.event_time>>
+        *Device Name*: <<detection_limacharlie.body.detect.routing.hostname>>
+        *Username*: <<detection_limacharlie.body.detect.event.USER_NAME>>
+        *Source IP*: <<detection_limacharlie.body.detect.routing.ext_ip>>
+        *File Path*: <<detection_limacharlie.body.detect.event.FILE_PATH>>
+        *Command Line*: <<detection_limacharlie.body.detect.event.COMMAND_LINE>>
+        *Process ID*: <<detection_limacharlie.body.detect.event.PROCESS_ID>>
+        *Hash*: <<detection_limacharlie.body.detect.event.HASH>>
+        *Alert Level*: <<detection_limacharlie.body.detect_mtd.level>>
+        *Sensor ID*: <<detection_limacharlie.body.detect.routing.sid>>
+        *Detection Link*: <<detection_limacharlie.body.link>>
+        ```
+
+3. **Run Tests**:
+    - Click on your Webhook app, go to **Events**, and on the LaZagne event, click on **Re-emit**.
+    - Ensure your email, Slack alert message, and user prompt all have the necessary details.
+
+### Configuring Triggers: YES and NO
+
+1. **Set Up NO Trigger**:
+    - Drag the **Trigger** action into the middle of your playbook and configure it.
+    - Name it **NO**.
+    - Click on **Rule**, then **+ Plus**, then **Value**.
+    - Click on **User_Prompt**, then **Body**, then **Isolate**, and set `is equal to` to **false**.
+
+2. **Configure NO Trigger Slack Message**:
+    - Copy the Slack app and connect it after the **NO** trigger.
+    - Modify the message to:
+        ```plaintext
+        *The Device*: <<detection_limacharlie.body.detect.routing.isolate>> was not isolated, please investigate.
+        ```
+
+3. **Test NO Trigger**:
+    - Re-emit an event from the Webhook, answer NO in the user prompt, and check your Slack alert message.
+
+4. **Set Up YES Trigger**:
+    - Copy the NO trigger and modify it. Change the name to **YES** and set `is equal to` to **true**.
+
+5. **Configure YES Trigger to Isolate Device**:
+    - Go to **Templates** and search for **LimaCharlie**.
+    - Add it to your playbook and choose **Isolate Sensor**.
+    - Replace `{} sid` with `<<detection_limacharlie.body.detect.routing.sid>>`.
+
+6. **Add LimaCharlie Credentials**:
+    - In Tines, go to **Dashboard**, then **Credentials**, and create a new LimaCharlie credential just like you did with `Slack`.
+    - Navigate to LimaCharlie, go to **Access Management**, click on **REST API**, copy the Org JWT, and paste it into Tines LimaCharlie `Value` field.
+
+7. **Test YES Trigger and Isolation**:
+    - Re-emit another event from the Webhook.
+    - Go to the User Input and click YES.
+
+8. **Verify Isolation**:
+    - In LimaCharlie, navigate to **Sensor List**, click on the Windows Server VM, and check the **Network Access** status.
+
+9. **Rejoin Network**:
+    - In LimaCharlie, click on **Rejoin Network**.
+
+10. **Add Get Isolation Status**:
+    - Drag a new LimaCharlie app from **Templates**.
+    - Search for **Status** and choose **Get Isolation Status**.
+    - Connect the credential you created before to the new LimaCharlie template.
+
+11. **Test and Verify Isolation Status**:
+    - Connect the first LimaCharlie template with the second one.
+    - Change the **Sensor ID** to match your device.
+    - Re-emit another event from the Webhook to ensure it works.
+
+12. **Configure Final Slack Notification**:
+    - Copy the second Slack app created under the **NO** trigger and connect it to the second LimaCharlie app.
+    - Modify the message to:
+        ```plaintext
+        Isolation Status: <<get_isolation_status.body.is_isolated>>
+        Device: <<detection_l
