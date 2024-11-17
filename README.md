@@ -355,4 +355,7 @@ respond:
     - Re-emit an event or run LaZagne or Mimikatz again to test your playbook.
     - Verify that your playbook works as intended, allowing a SOC analyst to decide whether to isolate a device, sending emails to your SOC team, and providing alerts in your Slack messages.
 
-You now have a complete playbook for isolating or not isolating a device based on SOC analyst inputs, with notifications via email and Slack.
+## Conclusion:
+You now have a complete playbook for isolating or not isolating a device based on SOC analyst inputs, with notifications via email and Slack. You've successfully connected Tines, LimaCharlie, Slack, and SquareX to create a workflow for detection, alerting, and response.
+
+> Remember: The purpose of this lab is educational, focusing on detection engineering and incident response workflows. Tools like Mimikatz and LaZagne should never be used in a production environment unless you have explicit authorization.
