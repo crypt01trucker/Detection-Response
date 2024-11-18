@@ -234,7 +234,7 @@ respond:
 
 ![InstallationKeys](Screenshots/SlackAlertChannel.png).
 
-![InstallationKeys](Screenshots/SlackAlertChanne2.png).
+![InstallationKeys](Screenshots/SlackAlertChannel2.png).
 
 ### SquareX Setup
 
