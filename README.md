@@ -93,11 +93,19 @@ This **Installation Key** will be required to install the LimaCharlie agent on y
 
 ![InstallationKeys](Screenshots/KeyInstallationVM.png).
 
+![InstallationKeys](Screenshots/Inspectfilehash.png).
+
+![InstallationKeys](Screenshots/virustotal.png).
+
 ## Install Credential Dump Tool LaZagne
 
 ### Step 1: Preparing the Windows Server VM
 1. **Disable Windows Defender:** First, disable Windows Defender on your Windows Server VM. This will allow us to download and run LaZagne without it being blocked.
 2. **Download LaZagne:** Go to the official GitHub repository for LaZagne: [GitHub - AlessandroZ/LaZagne](https://github.com/AlessandroZ/LaZagne). You might see a warning about the download’s safety—ignore this by clicking on the three dots and selecting **Keep Anyway**.
+
+![InstallationKeys](Screenshots/downloadlazagne.png).
+
+![InstallationKeys](Screenshots/downloadlazagne2.png).
 
 ### Step 2: Running LaZagne and Checking Telemetry in LimaCharlie
 1. **Run LaZagne:** Execute the LaZagne tool in a admin PowerShell terminal on your VM to initiate the credential-stealing simulation.
@@ -109,20 +117,35 @@ This **Installation Key** will be required to install the LimaCharlie agent on y
    - **Hash**
    - **User Name**
 
+![InstallationKeys](Screenshots/D&RRules6fields.png).
+
 ### Step 3: Create a Detection & Response (D&R) Rule in LimaCharlie
 
 Now, we’ll create a custom rule in LimaCharlie to detect LaZagne’s activity.
 
 1. **Navigate to Automation**:
-   - Open a new tab and go to the **Automation** tab in LimaCharlie.
+   - Go to the **Automation** tab in LimaCharlie.
 
 2. **Create a Custom Rule**:
    - Under **D&R Rules**, click on **Create Custom Rule**.
 
+![InstallationKeys](Screenshots/D&RRules.png).
+
 3. **Use an Existing Template**:
    - To simplify rule creation, find an existing rule that detects process creation and copy it as a template.
+   - Click on the link to view the rule in github.
+   - Copy the rule into a text editor.
+   - Modify it to detect LaZagne HackTool.
 
-Here is an example of a D&R rule to detect LaZagne:
+![InstallationKeys](Screenshots/D&RRules3.png).
+
+Here is an example of a D&R rule:
+
+![InstallationKeys](Screenshots/D&RRules4.png).
+
+![InstallationKeys](Screenshots/D&RRules5.png).
+
+Here is the modified version:
 
 ```yaml
 detect:
@@ -158,6 +181,8 @@ respond:
         - attack.credential_access
     name: SocLab - HackingTool - LaZagne
 ```
+
+![InstallationKeys](Screenshots/D&RRules7modified.png).
 
 ### Rule Breakdown:
 - **Event Types**: Triggers on **NEW_PROCESS** or **EXISTING_PROCESS**.
