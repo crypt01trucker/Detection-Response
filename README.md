@@ -71,11 +71,13 @@ This **Installation Key** will be required to install the LimaCharlie agent on y
 
 ![InstallationKeys](Screenshots/KeyInstallation4.png).
 
+![InstallationKeys](Screenshots/KeyInstallation5.png).
+
 ![InstallationKeys](Screenshots/KeyInstallation6.png).
 
 3. After installation, go to **Services** in the Windows VM, and you should see that the **LimaCharlie agent** is running.
 
-![InstallationKeys](Screenshots/KeyInstallation5.png).
+![InstallationKeys](Screenshots/KeyInstallationservice.png).
 
 ### Step 5: Verify the Sensor in LimaCharlie
 1. Go back to the LimaCharlie portal, and under the **Sensors** tab, navigate to the **Sensors List**.
