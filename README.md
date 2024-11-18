@@ -198,9 +198,15 @@ respond:
 1. Copy this modified rule into your new custom rule in LimaCharlie.
 2. Paste an example event of LaZagne to test if your rule correctly detects LaZagne.
 
+![InstallationKeys](Screenshots/D&RRules8copyeventpng).
+
+![InstallationKeys](Screenshots/D&RRules9Testrule.png).
+
 ### Step 4: Clear Detections and Run LaZagne Again
 1. **Delete Existing Detections:** For a clean slate, delete previous detections in the **Detections** tab.
-2. **Re-run LaZagne with `/all` Argument:** On your Windows Server VM, run `lazagne.exe /all` and check LimaCharlie’s **Detections** tab again to confirm your rule has detected it.
+2. **Re-run LaZagne with `all` Argument:** On your Windows VM, run `lazagne.exe all` and check LimaCharlie’s **Detections** tab again to confirm your rule has detected it.
+
+![InstallationKeys](Screenshots/D&RRuleSseeDetections.png).
 
 ### Bonus Step: Detecting Mimikatz
 1. **Download Mimikatz:** Get Mimikatz from [GitHub - gentilkiwi/mimikatz](https://github.com/gentilkiwi/mimikatz), extract the file, and open PowerShell as admin.
@@ -209,7 +215,12 @@ respond:
    privilege::debug
    sekurlsa::logonpasswords
    ```
+
+![InstallationKeys](Screenshots/mimikatzRun.png).
+
 3. **Check LimaCharlie Detections:** Mimikatz should trigger the built-in detection rules in LimaCharlie designed for Mimikatz.
+
+![InstallationKeys](Screenshots/mimikatztimeline+Detection.png).
 
 ## Signing Up for Slack, SquareX, and Tines
 
@@ -220,6 +231,8 @@ respond:
 2. **Create a Channel**:
    - Once your account is set up, create a new channel named `#alert`.
    - This channel will receive the detection alerts from Tines.
+
+![InstallationKeys](Screenshots/SlackAlertChannel.png).
 
 ### SquareX Setup
 
@@ -235,6 +248,12 @@ respond:
 3. **Clear Default Apps**:
    - Delete the two default apps in the middle to start fresh.
 
+> **Tip:** For an eye-friendly experience, switch to dark mode.
+
+![InstallationKeys](Screenshots/Tines.png).
+
+![InstallationKeys](Screenshots/Tines2.png).
+
 ## Running the Playbook in SOAR Tines
 
 ### Connecting Slack with Tines
@@ -243,10 +262,17 @@ respond:
     - In your Tines story/playbook, click on **Templates** and search for **Slack**. Drag it into the middle of your playbook.
     - On the right-hand side of the screen, choose **Send Message**.
 
+![InstallationKeys](Screenshots/tinesslackapp.png).
+
 2. **Integrate Tines with Slack**:
     - In the Slack portal, go to **Apps** and add the Tines app.
     - In Tines, navigate to **Dashboard**, click on **Your First Team**, then **Credentials**. Click on **+New**, search for Slack, and select it.
     - In the new window, click on **Use Tines' App for Slack**, then **Allow**.
+
+![InstallationKeys](Screenshots/SlackAppTines.png).
+
+
+
 
 3. **Connect Credentials**:
     - Go back to your playbook in Tines and connect the credentials with the Slack template you just created.
