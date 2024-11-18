@@ -51,6 +51,10 @@ Start by deploying a **Windows VM**. You can set it up:
 
 This **Installation Key** will be required to install the LimaCharlie agent on your Windows VM.
 
+[InstallationKeys](Screenshots/KeyInstallation.png).
+
+[InstallationKeys](Screenshots/KeyInstallation2.png).
+
 ### Step 4: Install the LimaCharlie Agent on the Windows VM
 1. Connect to your Windows VM.
 2. Download the **LimaCharlie Windows Agent** (64-bit) using the [download link](https://downloads.limacharlie.io/sensor/windows/64) provided in the **Installation Keys** tab in the LimaCharlie portal.
