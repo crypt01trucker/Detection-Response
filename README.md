@@ -60,6 +60,8 @@ This **Installation Key** will be required to install the LimaCharlie agent on y
 2. Download the **LimaCharlie Windows Agent** (64-bit) using the [download link](https://downloads.limacharlie.io/sensor/windows/64) provided in the **Installation Keys** tab in the LimaCharlie portal.
 3. Copy the **Sensor Key** created in Step 3, as we’ll need it to complete the installation.
 
+![InstallationKeys](Screenshots/KeyInstallation3.png).
+
 ### Installing the Agent
 1. Open an admin PowerShell terminal in the directory where the agent file is downloaded.
 2. Run the following command to install the agent, replacing `lc_sensor.exe` with the downloaded file name and `YOUR_INSTALLATION_KEY` with your actual Sensor Key:
@@ -67,11 +69,19 @@ This **Installation Key** will be required to install the LimaCharlie agent on y
    .\lc_sensor.exe -i YOUR_INSTALLATION_KEY
    ```
 
+![InstallationKeys](Screenshots/KeyInstallation4.png).
+
+![InstallationKeys](Screenshots/KeyInstallation6.png).
+
 3. After installation, go to **Services** in the Windows VM, and you should see that the **LimaCharlie agent** is running.
+
+![InstallationKeys](Screenshots/KeyInstallation5.png).
 
 ### Step 5: Verify the Sensor in LimaCharlie
 1. Go back to the LimaCharlie portal, and under the **Sensors** tab, navigate to the **Sensors List**.
 2. You should see your Windows VM listed here. Click on it to view additional details.
+
+![InstallationKeys](Screenshots/KeyInstallationlima.png).
 
 ### Exploring the Endpoint
 - **File System**: View, download, and check file hashes (useful for identifying malware via VirusTotal).
@@ -80,6 +90,8 @@ This **Installation Key** will be required to install the LimaCharlie agent on y
 - **Console**: Send commands directly to the endpoint.
 - **Network**: Monitor network processes and detect connections to any malicious IPs.
 - **Timeline**: Track events in chronological order for incident analysis.
+
+![InstallationKeys](Screenshots/KeyInstallationVM.png).
 
 ## Install Credential Dump Tool LaZagne
 
