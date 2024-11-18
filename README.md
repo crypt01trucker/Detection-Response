@@ -198,7 +198,7 @@ respond:
 1. Copy this modified rule into your new custom rule in LimaCharlie.
 2. Paste an example event of LaZagne to test if your rule correctly detects LaZagne.
 
-![InstallationKeys](Screenshots/D&RRules8copyeventpng).
+![InstallationKeys](Screenshots/D&RRules8copyevent.png).
 
 ![InstallationKeys](Screenshots/D&RRules9Testrule.png).
 
@@ -233,6 +233,8 @@ respond:
    - This channel will receive the detection alerts from Tines.
 
 ![InstallationKeys](Screenshots/SlackAlertChannel.png).
+
+![InstallationKeys](Screenshots/SlackAlertChanne2.png).
 
 ### SquareX Setup
 
@@ -269,30 +271,53 @@ respond:
     - In Tines, navigate to **Dashboard**, click on **Your First Team**, then **Credentials**. Click on **+New**, search for Slack, and select it.
     - In the new window, click on **Use Tines' App for Slack**, then **Allow**.
 
+![InstallationKeys](Screenshots/TinesCredentialSlack.png).
+
+![InstallationKeys](Screenshots/TinesCredentialSlack2.png).
+
+![InstallationKeys](Screenshots/TinesCredentialSlack3.png).
+
+![InstallationKeys](Screenshots/TinesCredentialSlack4.png).
+
 ![InstallationKeys](Screenshots/SlackAppTines.png).
-
-
-
 
 3. **Connect Credentials**:
     - Go back to your playbook in Tines and connect the credentials with the Slack template you just created.
     - Input the **Channel ID** from the alerts channel in Slack. You can find this by going into the alerts channel, clicking on **Open Channel Details**, and copying the Channel ID at the bottom.
 
+![InstallationKeys](Screenshots/tinesslackapp3channelID.png).
+
+![InstallationKeys](Screenshots/tinesslackapp3channelID2.png).
+
+![InstallationKeys](Screenshots/tinesslackapp3channelID3.png).
+
 4. **Test Slack Integration**:
     - Click on the Slack template in Tines, and then click on **Test** to see if you receive the default "Hello, world!" in the alerts channel in Slack.
+
+![InstallationKeys](Screenshots/tinesslackapp4test.png).
+
+![InstallationKeys](Screenshots/tinesslackapp4test2.png).
+
+![InstallationKeys](Screenshots/tinesslackapp4test3.png).
 
 ### Setting Up Email with SquareX
 
 1. **Get Disposable Email Address**:
     - Go to the SquareX portal and copy your disposable email address.
 
+![InstallationKeys](Screenshots/tinesemailapp2.png).
+
 2. **Add Email App to Tines**:
     - In Tines, drag and drop the **Send Email** app into the middle of your playbook.
     - Add the email address in the **Send Email** app.
 
+![InstallationKeys](Screenshots/tinesemailapp.png).
+
 3. **Test Email Integration**:
     - Connect the **Webhook** app with the **Send Email** app and the **Slack** app.
     - If everything is set up correctly, you should receive an email and a Slack message.
+
+![InstallationKeys](Screenshots/tinesemailapp5.png).
 
 ### Setting Up User Prompt
 
@@ -300,9 +325,18 @@ respond:
     - In Tines, click on **Tools**, then **Page**, and drag it into the middle of your playbook.
     - Give it a name and click on **Edit Page**.
 
+![InstallationKeys](Screenshots/tinesuserprompt.png).
+
+![InstallationKeys](Screenshots/tinesuserprompt2.png).
+
+![InstallationKeys](Screenshots/tinesuserprompt3.png).
+
 2. **Customize Detection Details**:
     - Modify the page to include detection details so the SOC Analyst can decide whether to isolate the device.
 	- To find the good format for the fields, you can go in the webhook app, click on events, find the LaZagne event and click on a field to copy it.
+
+![InstallationKeys](Screenshots/TinesWebhooksavefields.png).
+
     - Use the following fields for event details:
         ```markdown
         **Title**: <<detection_limacharlie.body.cat>>
@@ -319,13 +353,17 @@ respond:
         **Detection Link**: <<detection_limacharlie.body.link>>
         ```
 
+![InstallationKeys](Screenshots/tinesuserprompt4.png).
+
 3. **Add a Boolean Field (Yes or No)**:
     - Add a Boolean field for user prompt `isolate?`.
+
+![InstallationKeys](Screenshots/tinesuserprompt6.png).
 
 ### Email Template Configuration
 
 1. **Format Email in HTML**:
-    - Copy the same fields for the **User Prompt** app.
+    - Copy the same fields from the **User Prompt** app.
     - Format the email in HTML to make it look nice:
         ```html
         <b>Title</b>: <<detection_limacharlie.body.cat>><br>
@@ -341,6 +379,8 @@ respond:
         <b>Sensor ID</b>: <<detection_limacharlie.body.detect.routing.sid>><br>
         <b>Detection Link</b>: <a href="<<detection_limacharlie.body.link>>"><<detection_limacharlie.body.link>></a>
         ```
+
+
 
 2. **Add Fields in Slack App**:
     - Add the same fields in the Slack app to ensure the alert message contains all detection details:
