@@ -51,9 +51,9 @@ Start by deploying a **Windows VM**. You can set it up:
 
 This **Installation Key** will be required to install the LimaCharlie agent on your Windows VM.
 
-[InstallationKeys](Screenshots/KeyInstallation.png).
+![InstallationKeys](Screenshots/KeyInstallation.png).
 
-[InstallationKeys](Screenshots/KeyInstallation2.png).
+![InstallationKeys](Screenshots/KeyInstallation2.png).
 
 ### Step 4: Install the LimaCharlie Agent on the Windows VM
 1. Connect to your Windows VM.
