@@ -15,6 +15,10 @@ To complete this lab, ensure you have:
 - **Access to a Windows VM** (Virtual Machine) either in the cloud or on your local machine (using Hyper-V, VMware, or VirtualBox).
 - Accounts on these platforms: **Tines**, **LimaCharlie**, **Slack**, and **SquareX**.
 
+## Lab Topology
+
+[Topology](Screenshots/Topology.png).
+
 ## Tools Overview
 
 ### SOAR (Security Orchestration, Automation, and Response)
