@@ -228,6 +228,36 @@ respond:
 
 ## Signing Up for Slack, SquareX, and Tines
 
+### Adding Webhook App
+
+1. **Add the Webhook App**:
+    - In your Tines story/playbook, drag and drop the **Webhook** app into the middle of your playbook.
+    - Rename it to **Detection LimaCharlie**.
+    - Copy the URL from the Webhook app to connect with LimaCharlie.
+
+2. **Configure LimaCharlie Output**:
+    - In the LimaCharlie portal, navigate to the **Outputs** tab. 
+    - Click on **+ Add Output**, then select **Detections**.
+    - Scroll down and choose **Tines** as the output type.
+    - Give it a name and paste the URL copied from the Webhook app in Tines. Click **Save Output**.
+
+![Outputs](Screenshots/LimacharlieOutputs.png).
+
+![Outputs](Screenshots/LimacharlieOutputs2.png).
+
+![Outputs](Screenshots/LimacharlieOutputs3.png).
+
+![Outputs](Screenshots/LimacharlieOutputs4.png).
+
+3. **Test the Configuration**:
+    - On your Windows VM, re-run the LaZagne tool to trigger a detection in LimaCharlie.
+    - In the LimaCharlie portal, click on **Refresh Samples** to confirm the detection rule is working.
+
+![Outputs](Screenshots/LimacharlieOutputs5.png).
+
+4. **Verify in Tines**:
+    - Go back to the Tines portal, click on the **Webhook** app, and then click on **Events**. Check if the LaZagne detection rule was successfully received.
+
 ### Slack Setup
 
 1. **Sign Up on Slack**:
