@@ -271,6 +271,8 @@ respond:
     - In Tines, navigate to **Dashboard**, click on **Your First Team**, then **Credentials**. Click on **+New**, search for Slack, and select it.
     - In the new window, click on **Use Tines' App for Slack**, then **Allow**.
 
+![InstallationKeys](Screenshots/SlackAppTines.png).
+
 ![InstallationKeys](Screenshots/TinesCredentialSlack.png).
 
 ![InstallationKeys](Screenshots/TinesCredentialSlack2.png).
@@ -278,8 +280,6 @@ respond:
 ![InstallationKeys](Screenshots/TinesCredentialSlack3.png).
 
 ![InstallationKeys](Screenshots/TinesCredentialSlack4.png).
-
-![InstallationKeys](Screenshots/SlackAppTines.png).
 
 3. **Connect Credentials**:
     - Go back to your playbook in Tines and connect the credentials with the Slack template you just created.
@@ -338,6 +338,7 @@ respond:
 ![InstallationKeys](Screenshots/TinesWebhooksavefields.png).
 
     - Use the following fields for event details:
+    
         ```markdown
         **Title**: <<detection_limacharlie.body.cat>>
         **Time**: <<detection_limacharlie.body.detect.routing.event_time>>
