@@ -22,7 +22,7 @@ To complete this lab, ensure you have:
 ## Tools Overview
 
 ### SOAR (Security Orchestration, Automation, and Response)
-We’ll use **Tines**, an open-source SOAR tool. Tines enables SOC teams to automate repetitive tasks, orchestrate complex workflows, and streamline incident response processes, reducing the time needed to mitigate security threats.
+We’ll use **Tines**, the free version of the commercial SOAR tool. Tines enables SOC teams to automate repetitive tasks, orchestrate complex workflows, and streamline incident response processes, reducing the time needed to mitigate security threats.
 
 ### EDR (Endpoint Detection and Response)
 Our EDR tool for this lab is **LimaCharlie**, which continuously monitors and collects data from endpoints (e.g., computers, servers, mobile devices) to detect suspicious activities and take appropriate actions before potential breaches escalate.
