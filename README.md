@@ -445,7 +445,7 @@ respond:
     - Click on your Webhook app, click on **Events**, and on the LaZagne event, click on **Re-emit**.
     - Ensure your email, Slack alert message, and user prompt all have the necessary details.
 
-![reemit](Screenshots/TinesWebhookreemit.png).
+![reemit](Screenshots/TinesWebhookeventsReemit.png).
 
 ![reemit2](Screenshots/reemit2.png).
 
