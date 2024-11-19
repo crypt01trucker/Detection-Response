@@ -235,6 +235,8 @@ respond:
     - Rename it to **Detection LimaCharlie**.
     - Copy the URL from the Webhook app to connect with LimaCharlie.
 
+![Webhook](Screenshots/TinesWebhook.pnh.).
+
 2. **Configure LimaCharlie Output**:
     - In the LimaCharlie portal, navigate to the **Outputs** tab. 
     - Click on **+ Add Output**, then select **Detections**.
