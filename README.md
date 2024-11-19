@@ -266,6 +266,8 @@ respond:
 
 ![InstallationKeys](Screenshots/tinesslackapp.png).
 
+![InstallationKeys](Screenshots/tinesslackapp2.png).
+
 2. **Integrate Tines with Slack**:
     - In the Slack portal, go to **Apps** and add the Tines app.
     - In Tines, navigate to **Dashboard**, click on **Your First Team**, then **Credentials**. Click on **+New**, search for Slack, and select it.
