@@ -337,22 +337,23 @@ respond:
 
 ![InstallationKeys](Screenshots/TinesWebhooksavefields.png).
 
-    - Use the following fields for event details:
-    
-        ```markdown
-        **Title**: <<detection_limacharlie.body.cat>>
-        **Time**: <<detection_limacharlie.body.detect.routing.event_time>>
-        **Device Name**: <<detection_limacharlie.body.detect.routing.hostname>>
-        **Username**: <<detection_limacharlie.body.detect.event.USER_NAME>>
-        **Source IP**: <<detection_limacharlie.body.detect.routing.ext_ip>>
-        **File Path**: <<detection_limacharlie.body.detect.event.FILE_PATH>>
-        **Command Line**: <<detection_limacharlie.body.detect.event.COMMAND_LINE>>
-        **Process ID**: <<detection_limacharlie.body.detect.event.PROCESS_ID>>
-        **Hash**: <<detection_limacharlie.body.detect.event.HASH>>
-        **Alert Level**: <<detection_limacharlie.body.detect_mtd.level>>
-        **Sensor ID**: <<detection_limacharlie.body.detect.routing.sid>>
-        **Detection Link**: <<detection_limacharlie.body.link>>
-        ```
+- Use the following fields for event details:
+
+    ```plaintext
+    **Title**: <<detection_limacharlie.body.cat>>
+    **Time**: <<detection_limacharlie.body.detect.routing.event_time>>
+    **Device Name**: <<detection_limacharlie.body.detect.routing.hostname>>
+    **Username**: <<detection_limacharlie.body.detect.event.USER_NAME>>
+    **Source IP**: <<detection_limacharlie.body.detect.routing.ext_ip>>
+    **File Path**: <<detection_limacharlie.body.detect.event.FILE_PATH>>
+    **Command Line**: <<detection_limacharlie.body.detect.event.COMMAND_LINE>>
+    **Process ID**: <<detection_limacharlie.body.detect.event.PROCESS_ID>>
+    **Hash**: <<detection_limacharlie.body.detect.event.HASH>>
+    **Alert Level**: <<detection_limacharlie.body.detect_mtd.level>>
+    **Sensor ID**: <<detection_limacharlie.body.detect.routing.sid>>
+    **Detection Link**: <<detection_limacharlie.body.link>>
+    ```
+
 
 ![InstallationKeys](Screenshots/tinesuserprompt4.png).
 
