@@ -17,7 +17,7 @@ To complete this lab, ensure you have:
 
 ## Lab Topology
 
-[Topology](Screenshots/Topology.png).
+![Topology](Screenshots/Topology.png).
 
 ## Tools Overview
 
