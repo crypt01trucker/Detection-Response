@@ -382,7 +382,7 @@ respond:
         <b>Detection Link</b>: <a href="<<detection_limacharlie.body.link>>"><<detection_limacharlie.body.link>></a>
         ```
 
-
+![InstallationKeys](Screenshots/TinesEmailapp6.png).
 
 2. **Add Fields in Slack App**:
     - Add the same fields in the Slack app to ensure the alert message contains all detection details:
@@ -401,6 +401,8 @@ respond:
         *Detection Link*: <<detection_limacharlie.body.link>>
         ```
 
+![InstallationKeys](Screenshots/tinesslackappfieldsdetails.png).
+
 3. **Run Tests**:
     - Click on your Webhook app, go to **Events**, and on the LaZagne event, click on **Re-emit**.
     - Ensure your email, Slack alert message, and user prompt all have the necessary details.
@@ -413,6 +415,14 @@ respond:
     - Click on **Rule**, then **+ Plus**, then **Value**.
     - Click on **User_Prompt**, then **Body**, then **Isolate**, and set `is equal to` to **false**.
 
+![InstallationKeys](Screenshots/Tinestriggerno.png).
+
+![InstallationKeys](Screenshots/Tinestriggerno2.png).
+
+![InstallationKeys](Screenshots/Tinestriggerno3.png).
+
+![InstallationKeys](Screenshots/Tinestriggerno4.png).
+
 2. **Configure NO Trigger Slack Message**:
     - Copy the Slack app and connect it after the **NO** trigger.
     - Modify the message to:
@@ -423,17 +433,29 @@ respond:
 3. **Test NO Trigger**:
     - Re-emit an event from the Webhook, answer NO in the user prompt, and check your Slack alert message.
 
+![InstallationKeys](Screenshots/tinesuserpromptNotriggerSlack.png).
+
 4. **Set Up YES Trigger**:
     - Copy the NO trigger and modify it. Change the name to **YES** and set `is equal to` to **true**.
+
+![InstallationKeys](Screenshots/tinesTriggerYes.png).
 
 5. **Configure YES Trigger to Isolate Device**:
     - Go to **Templates** and search for **LimaCharlie**.
     - Add it to your playbook and choose **Isolate Sensor**.
     - Replace `{} sid` with `<<detection_limacharlie.body.detect.routing.sid>>`.
 
+![InstallationKeys](Screenshots/TinesLimaCharlieIsolate.png).
+
+![InstallationKeys](Screenshots/TinesLimaCharlieIsolate2.png).
+
 6. **Add LimaCharlie Credentials**:
     - In Tines, go to **Dashboard**, then **Credentials**, and create a new LimaCharlie credential just like you did with `Slack`.
     - Navigate to LimaCharlie, go to **Access Management**, click on **REST API**, copy the Org JWT, and paste it into Tines LimaCharlie `Value` field.
+
+![InstallationKeys](Screenshots/TinesLimaCharlieIsolate3.png).
+
+![InstallationKeys](Screenshots/TinesLimaCharlieIsolate4Credentials.png).
 
 7. **Test YES Trigger and Isolation**:
     - Re-emit another event from the Webhook.
@@ -442,8 +464,14 @@ respond:
 8. **Verify Isolation**:
     - In LimaCharlie, navigate to **Sensor List**, click on the Windows Server VM, and check the **Network Access** status.
 
+![InstallationKeys](Screenshots/LimaCharlieNetworkIsolate.png)
+
 9. **Rejoin Network**:
     - In LimaCharlie, click on **Rejoin Network**.
+
+![InstallationKeys](Screenshots/LimaCharlieNetworkIsolate2.png)
+
+![InstallationKeys](Screenshots/LimaCharlieNetworkIsolate3.png)
 
 10. **Add Get Isolation Status**:
     - Drag a new LimaCharlie app from **Templates**.
@@ -462,9 +490,16 @@ respond:
         *Isolation Status:* <<isolate_sensor.status>>
         *Device Name*: <<detection_limacharlie.body.detect.routing.hostname>> has been isolated.
         ```
+
+![InstallationKeys](Screenshots/TinesSlack3rdIsolatedStatus.png).
+
+![InstallationKeys](Screenshots/TinesSlack3rdIsolatedStatus2.png).
+
 13. **Test Your Playbook**:
     - Re-emit an event or run LaZagne or Mimikatz again to test your playbook.
     - Verify that your playbook works as intended, allowing a SOC analyst to decide whether to isolate a device, sending emails to your SOC team, and providing alerts in your Slack messages.
+
+![Final](Screenshots/TinesFinalSetup.png).
 
 ## Conclusion:
 You now have a complete playbook for isolating or not isolating a device based on SOC analyst inputs, with notifications via email and Slack. You've successfully connected Tines, LimaCharlie, Slack, and SquareX to create a workflow for detection, alerting, and response.
