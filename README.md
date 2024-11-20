@@ -149,7 +149,7 @@ Here is an example of a D&R rule:
 
 ![InstallationKeys](Screenshots/D&RRules4.png).
 
-![InstallationKeys](Screenshots/D&RRules5.png).
+![ModifiedD&Rrule](Screenshots/D&Rlast.png).
 
 Here is the modified version:
 
