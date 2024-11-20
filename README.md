@@ -373,7 +373,7 @@ respond:
     - Modify the page to include detection details so the SOC Analyst can decide whether to isolate the device.
 	- To find the good format for the fields, you can go in the webhook app, click on events, find the LaZagne event and click on a field to copy it.
 
-![InstallationKeys](Screenshots/TinesWebhooksavefields.png).
+![InstallationKeys](Screenshots/reemit3.png).
 
 - Use the following fields for event details:
 
