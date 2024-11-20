@@ -149,7 +149,7 @@ Here is an example of a D&R rule:
 
 ![InstallationKeys](Screenshots/D&RRules4.png).
 
-![ModifiedD&Rrule](Screenshots/D&Rlast.png).
+![InstallationKeys](Screenshots/D&RRules5.png).
 
 Here is the modified version:
 
@@ -188,7 +188,7 @@ respond:
     name: SocLab - HackingTool - LaZagne
 ```
 
-![InstallationKeys](Screenshots/D&RRules7modified.png).
+![ModifiedD&Rrule](Screenshots/D&Rlast.png).
 
 ### Rule Breakdown:
 - **Event Types**: Triggers on **NEW_PROCESS** or **EXISTING_PROCESS**.
